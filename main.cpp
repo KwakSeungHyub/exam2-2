@@ -15,20 +15,15 @@ Animal* createRandomAnimal() {
 int main() {
     std::srand(static_cast<unsigned>(std::time(nullptr))); // 난수를 초기화함
 
-    Zoo zoo; // Zoo 객체 생성
-    //생성할 동물 숫자 입력받을 변수
-    int random = 0 ;
-    std::cout << "몇마리의 동물을 넣을 지 입력하세요(정수):" ;
-    // 생성할 동물 숫자 입력받은 값 저장
-    std::cin >> random;
-    // 동물을 랜덤으로 생성하여 동물원에 추가
-    for (int i = 0; i < random; ++i) { // 사용자가 입력한 숫자만큼 동물 추가
+    Zoo zoo; // Zoo 객체 생성 10개만 들어가게 설정
+    // 동물을 랜덤으로 생성하여 동물원에 추가 현재 10개로 제한을 둬 동물은 10개까지 생성되지만 일부러 12개까지 생성해 에러 처리가 되는지 확인
+    for (int i = 0; i < 12; ++i) {
         Animal* randomAnimal = createRandomAnimal();
         zoo.addAnimal(randomAnimal);
     }
 
     // 동물원의 모든 동물 행동 수행
-    std::cout << "추가된 동물들의 울음소리:" << std::endl;
+    std::cout << "Zoo actions:" << std::endl;
     zoo.performActions();
 
     return 0; // Zoo 소멸자 호출로 메모리 해제
